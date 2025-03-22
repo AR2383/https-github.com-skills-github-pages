@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডিপোজিট এবং উইথড্রপ সাইট</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .balance {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .transaction-form input, .account-form input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .transaction-form button, .account-form button {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .transaction-form button:hover, .account-form button:hover {
+            background-color: #007bb5;
+        }
+
+        .transaction-form, .account-form {
+            margin-top: 20px;
+        }
+
+        .transaction-form label, .account-form label {
+            font-size: 16px;
+        }
+
+        .account-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ডিপোজিট এবং উইথড্রপ সাইট</h1>
+</header>
+
+<div class="container">
+    <!-- Balance Display -->
+    <div class="balance">
+        <p>আপনার ব্যালেন্স: <strong>৳ 5,000</strong></p>
+    </div>
+
+    <!-- Buttons for Deposit and Withdraw -->
+    <div>
+        <button class="button" onclick="document.getElementById('deposit-form').style.display='block'">ডিপোজিট</button>
+        <button class="button" onclick="document.getElementById('withdraw-form').style.display='block'">উইথড্রপ</button>
+        <button class="button" onclick="document.getElementById('account-form').style.display='block'">অ্যাকাউন্ট যোগ করুন</button>
+    </div>
+
+    <!-- Deposit Form -->
+    <div id="deposit-form" class="transaction-form" style="display:none;">
+        <h3>ডিপোজিট ফর্ম</h3>
+        <label for="deposit-amount">পরিমাণ:</label>
+        <input type="number" id="deposit-amount" name="deposit-amount" placeholder="যতটুকু ডিপোজিট করতে চান">
+        <button onclick="deposit()">ডিপোজিট করুন</button>
+        <button onclick="document.getElementById('deposit-form').style.display='none'">বাতিল</button>
+    </div>
+
+    <!-- Withdraw Form -->
+    <div id="withdraw-form" class="transaction-form" style="display:none;">
+        <h3>উইথড্রপ ফর্ম</h3>
+        <label for="withdraw-amount">পরিমাণ:</label>
+        <input type="number" id="withdraw-amount" name="withdraw-amount" placeholder="যতটুকু উইথড্রপ করতে চান">
+        <button onclick="withdraw()">উইথড্রপ করুন</button>
+        <button onclick="document.getElementById('withdraw-form').style.display='none'">বাতিল</button>
+    </div>
+
+    <!-- Account Addition Form -->
+    <div id="account-form" class="account-form">
+        <h3>আপনার বিকাশ বা নগদ অ্যাকাউন্ট যোগ করুন</h3>
+        <form>
+            <label for="account-number">অ্যাকাউন্ট নম্বর:</label>
+            <input type="text" id="account-number" name="account-number" placeholder="বিকাশ/নগদ নম্বর">
+            <button type="button" onclick="saveAccount()">জমা দিন</button>
+            <button type="button" onclick="document.getElementById('account-form').style.display='none'">বাতিল</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function deposit() {
+        var depositAmount = document.getElementById('deposit-amount').value;
+        if (depositAmount) {
+            alert("৳ " + depositAmount + " সফলভাবে ডিপোজিট করা হয়েছে!");
+            document.getElementById('deposit-form').style.display = 'none';
+        } else {
+            alert("আপনাকে পরিমাণ সঠিকভাবে পূরণ করতে হবে।");
+        }
+    }
+
+    function withdraw() {
+        var withdrawAmount = document.getElementById('withdraw-amount').value;
+        if (withdrawAmount) {
+            alert("৳ " + withdrawAmount + " সফলভাবে উইথড্রপ করা হয়েছে!");
+            document.getElementById('withdraw-form').style.display = 'none';
+        } else {
+            alert("আপনাকে পরিমাণ সঠিকভাবে পূরণ করতে হবে।");
+        }
+    }
+
+    function saveAccount() {
+        var accountNumber = document.getElementById('account-number').value;
+        if (accountNumber) {
+            alert("আপনার অ্যাকাউন্ট নম্বর সফলভাবে যোগ করা হয়েছে!");
+            document.getElementById('account-form').style.display = 'none';
+        } else {
+            alert("আপনাকে একটি অ্যাকাউন্ট নম্বর দিতে হবে।");
+        }
+    }
+</script>
+
+</body>
+</html>
